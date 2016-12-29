@@ -1,24 +1,21 @@
 package com.ziroom.tech.designpattern.strategy.context.Impl;
 
-import com.ziroom.tech.designpattern.strategy.context.*;
+import com.ziroom.tech.designpattern.strategy.context.VehicleContext;
 import com.ziroom.tech.designpattern.strategy.deligation.ControlSyetem;
 import com.ziroom.tech.designpattern.strategy.deligation.Engine;
-import com.ziroom.tech.designpattern.strategy.deligation.Impl.VolkswagenControlSystem;
-import com.ziroom.tech.designpattern.strategy.deligation.Impl.VolkswagenEngine;
-import com.ziroom.tech.designpattern.strategy.deligation.Impl.VolkswagenWheels;
 import com.ziroom.tech.designpattern.strategy.deligation.Wheels;
 
 /**
- * Created by LD.
- *
- * @date 29/12/2016.
+ * 这个类和 FerrariVehicle和VolkswagenVehicle相比更具有普遍性，我们可以通过对构造参数传入不同的
+ * Engine/ ControlSystem/ Wheels 创造不同种类的 Vehicle，更符合设计模式的原则
+ * Created by homelink on 2016/12/29.
  */
-public class VolkswagenVehicle extends VehicleContext {
+public class UniversalVehicle extends VehicleContext{
 
-    public VolkswagenVehicle() {
-        engine = new VolkswagenEngine();
-        controlSyetem = new VolkswagenControlSystem();
-        wheels = new VolkswagenWheels();
+    public UniversalVehicle(Engine engine, ControlSyetem controlSyetem, Wheels wheels) {
+        this.engine = engine;
+        this.controlSyetem = controlSyetem;
+        this.wheels = wheels;
     }
 
     @Override
@@ -32,9 +29,7 @@ public class VolkswagenVehicle extends VehicleContext {
 
     @Override
     public void wheelsInfo() {
-
         System.out.println(wheels.wheelsInfo());
-
     }
 
     @Override
@@ -45,7 +40,5 @@ public class VolkswagenVehicle extends VehicleContext {
         } else {
             System.out.println(controlSyetem.systemStart());
         }
-
     }
 }
-

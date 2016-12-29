@@ -3,6 +3,9 @@ package com.ziroom.tech.designpattern.strategy.context.Impl;
 import com.ziroom.tech.designpattern.strategy.context.VehicleContext;
 import com.ziroom.tech.designpattern.strategy.deligation.ControlSyetem;
 import com.ziroom.tech.designpattern.strategy.deligation.Engine;
+import com.ziroom.tech.designpattern.strategy.deligation.Impl.FerrariControlSystem;
+import com.ziroom.tech.designpattern.strategy.deligation.Impl.FerrariEngine;
+import com.ziroom.tech.designpattern.strategy.deligation.Impl.FerrariWheels;
 import com.ziroom.tech.designpattern.strategy.deligation.Wheels;
 
 /**
@@ -12,15 +15,15 @@ import com.ziroom.tech.designpattern.strategy.deligation.Wheels;
  */
 public class FerrariVehicle extends VehicleContext {
 
-
-    FerrariVehicle(Engine engine, ControlSyetem controlSyetem, Wheels wheels) {
-        engine = engine;
-        controlSyetem = controlSyetem;
-        wheels = wheels;
+    public FerrariVehicle() {
+        super();
+        engine = new FerrariEngine();
+        controlSyetem = new FerrariControlSystem();
+        wheels = new FerrariWheels();
     }
 
     @Override
-    public void engineStart(Engine engine) {
+    public void engineStart() {
         if (engine.isWorking()) {
             System.out.println(engine.engineStart());
         } else {
@@ -29,20 +32,19 @@ public class FerrariVehicle extends VehicleContext {
     }
 
     @Override
-    public void wheelsInfo(Wheels wheels) {
+    public void wheelsInfo() {
 
         System.out.println(wheels.wheelsInfo());
 
     }
 
     @Override
-    public void controSystemCheck(ControlSyetem controlSyetem) {
+    public void controSystemCheck() {
 
         if (controlSyetem.isWorking()) {
             System.out.println(controlSyetem.systemStop());
         } else {
             System.out.println(controlSyetem.systemStart());
         }
-
     }
 }

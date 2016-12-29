@@ -14,15 +14,15 @@ import com.ziroom.tech.designpattern.strategy.interfacepackage.ContextInterface;
 public abstract class VehicleContext implements ContextInterface {
 
     // 功能的实现需要委托的对象
-    ControlSyetem controlSyetem;
-    Engine engine;
-    Wheels wheels;
+    public ControlSyetem controlSyetem;
+    public Engine engine;
+    public Wheels wheels;
 
-    public abstract void engineStart(Engine engine);
+    public abstract void engineStart();
 
-    public abstract void wheelsInfo(Wheels wheels);
+    public abstract void wheelsInfo();
 
-    public abstract void controSystemCheck(ControlSyetem controlSyetem);
+    public abstract void controSystemCheck();
 
     @Override
     public String toString() {
